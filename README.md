@@ -1,2 +1,2 @@
 # odin-rock-paper-scissors-game
-Small Rock Paper Scissors game for the Odin Project
+A small Rock Paper Scissors game for the Odin Project
