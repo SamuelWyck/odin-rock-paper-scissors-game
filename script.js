@@ -99,7 +99,7 @@ function printWinner(playerScore, computerScore) {
     }
 }
 
-window.addEventListener("DOMContentLoaded", function() {
-    main();
-});
+
+main();
+
     
