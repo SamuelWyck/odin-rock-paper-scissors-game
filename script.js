@@ -100,5 +100,4 @@ function printWinner(playerScore, computerScore) {
 }
 
 
-
 main()
