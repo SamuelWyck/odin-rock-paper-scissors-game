@@ -74,7 +74,7 @@ function getPlayerChoice() {
     const validChoices = ["rock", "paper", "scissors"];
     let choice;
     while (true) {
-        choice = prompt("Enter your choice:").trim().toLowerCase();
+        choice = prompt("Enter your choice: (if this is the game start, press cancel, open the console and reload the page)").trim().toLowerCase();
         if (validChoices.includes(choice)) {
             break;
         }
