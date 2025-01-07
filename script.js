@@ -3,6 +3,7 @@ const playerScoreSpan = document.querySelector("#p-score");
 const computerScoreSpan = document.querySelector("#c-score");
 const playerChoiceSpan = document.querySelector("#p-choice");
 const computerChoiceSpan = document.querySelector("#c-choice");
+const endMessageDiv = document.querySelector(".end-message");
 
 btnDiv.addEventListener("mouseover", function (e) {
     if (e.target.matches("button")) {
@@ -17,61 +18,99 @@ btnDiv.addEventListener("mouseout", function (e) {
 });
 
 
-
-
-
-
-let playerScore = 0;
-let computerScore = 0;
-printScores(playerScore, computerScore);
-
-while (true) {
-    const score = playRound(playerScore, computerScore);
-    playerScore = score[0];
-    computerScore = score[1];
-    printScores(playerScore, computerScore);
-    if (playerScore === 5 || computerScore === 5) {
-        break;
+btnDiv.addEventListener("click", function (e) {
+    if (e.target.matches("button")) {
+        const choice = e.target.textContent;
+        playRound(choice);
     }
-}
-printWinner(playerScore, computerScore);
+})
 
 
 
-function playRound(playerScore, computerScore) {
+function playRound(playerChoice) {
+    if (needGameReset()) {
+        resetGame();
+    }
     const computerChoice = getComputerChoice();
-    const playerChoice = getPlayerChoice();
+    updateChoices(playerChoice, computerChoice);
     const playerWins = evalRound(playerChoice, computerChoice);
 
+    let gameover = false;
     if (playerWins === 0) {
-        computerScore += 1;
+        gameover = updateScore(computerScoreSpan);
     } else if (playerWins === 1) {
-        playerScore += 1;
+        gameover = updateScore(playerScoreSpan);
     }
-    return [playerScore, computerScore];
+
+    if (gameover) {
+        updateEndMessageDiv();
+    }
+}
+
+
+function resetGame() {
+    endMessageDiv.textContent = "";
+    playerScoreSpan.textContent = 0;
+    computerScoreSpan.textContent = 0;
+}
+
+
+function needGameReset() {
+    if (endMessageDiv.textContent === "") {
+        return false;
+    }
+    return true;
+}
+
+
+function updateEndMessageDiv() {
+    const playerScore = parseInt(playerScoreSpan.textContent);
+    let endMessage;
+    if (playerScore === 5) {
+        endMessage = "Player Wins!";
+    } else {
+        endMessage = "Computer Wins!";
+    }
+    endMessageDiv.textContent = endMessage;
+}
+
+
+function updateScore(element) {
+    let score = parseInt(element.textContent);
+    score += 1;
+    element.textContent = score;
+    let gameover = (score === 5) ? true : false;
+    
+    return gameover;
+}
+
+
+function updateChoices(playerChoice, computerChoice) {
+    playerChoiceSpan.textContent = playerChoice;
+    computerChoiceSpan.textContent = computerChoice;
 }
 
 
 function evalRound(playerChoice, computerChoice) {
     let playerWins = -1;
-    if (playerChoice === "rock") {
-        if (computerChoice === "paper") {
+    if (playerChoice === "Rock") {
+        if (computerChoice === "Paper") {
             playerWins = 0;
-        } else if (computerChoice === "scissors") {
+        } else if (computerChoice === "Scissors") {
             playerWins = 1;
         }
 
-    } else if (playerChoice === "paper") {
-        if (computerChoice === "scissors") {
+    } else if (playerChoice === "Paper") {
+        if (computerChoice === "Scissors") {
             playerWins = 0;
-        } else if (computerChoice === "rock") {
+        } else if (computerChoice === "Rock") {
             playerWins = 1;
         }
 
     } else {
-        if (computerChoice === "rock") {
+        if (computerChoice === "Rock") {
             playerWins = 0;
-        } else if (computerChoice === "paper") {
+        } else if (computerChoice === "Paper") {
             playerWins = 1;
         }
     }
@@ -83,46 +122,11 @@ function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     let choiceString;
     if (choice === 0) {
-        choiceString = "rock";
+        choiceString = "Rock";
     } else if (choice === 1) {
-        choiceString = "paper";
+        choiceString = "Paper";
     } else {
-        choiceString = "scissors";
+        choiceString = "Scissors";
     }
     return choiceString;
 }
-
-
-function getPlayerChoice() {
-    const validChoices = ["rock", "paper", "scissors"];
-    let choice;
-    while (true) {
-        choice = prompt("Enter your choice: (if this is the game start, press cancel, open the console and reload the page)").trim().toLowerCase();
-        if (validChoices.includes(choice)) {
-            break;
-        }
-        alert("Not a valid choice!");
-    }
-    return choice; 
-}
-
-
-function printScores(playerScore, computerScore) {
-    console.log(`Player: ${playerScore} \nComputer: ${computerScore}`)
-}
-
-
-function printWinner(playerScore, computerScore) {
-    if (playerScore > computerScore) {
-        console.log("Player wins!");
-    } else if (playerScore < computerScore) {
-        console.log("Computer wins!");
-    } else {
-        console.log("Draw!");
-    }
-}
-
-
-main();
-
-    
