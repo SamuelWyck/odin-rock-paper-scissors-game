@@ -10,15 +10,62 @@
 }
 
 .game-container {
-    flex-basis: 400px;
+    margin-top: 100px;
+    flex-basis: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #758E4F;
+    border-radius: 10px;
 }
 
 .scores-div {
-    flex-basis: 100px;
+    flex-basis: 150px;
     width: 90%;
-    margin: 20px 0px;
+    margin: 25px 0px;
+    background-color: rgba(245, 245, 245, 0.856);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
+.btn-div {
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 100%;
+}
+
+button {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 20px;
+    background-color: #3AAED8;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.status-div {
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 25px 0px;
+    flex-basis: 150px;
+    width: 90%;
+    border-radius: 10px;
+    background-color: #FFC759;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.end-message {
+    text-align: center;
+}
+
+.font {
+    font-size: 25px;
+    font-weight: 700;
+    color: #695958;
+}

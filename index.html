@@ -10,17 +10,22 @@
     
     <body>
         <div class="container">
-            <div class="game-container debug">
-                <div class="scores-div debug">
-
+            <div class="game-container">
+                <div class="scores-div font">
+                    <div>Player Score: <span id="p-score">0</span></div>
+                    <div>Computer Score: <span id="c-score">0</span></div>
                 </div>
                 <div class="btn-div">
                     <button>Rock</button>
                     <button>Paper</button>
                     <button>Scissors</button>
                 </div>
-                <div class="choices-div debug">
-
+                <div class="status-div">
+                    <div class="choices-div font">
+                        <div>Last Player Choice: <span id="p-choice"></span></div>
+                        <div>Last Computer Choice: <span id="c-choice"></span></div>
+                    </div>
+                    <div class="end-message"></div>
                 </div>
             </div>
         </div>
