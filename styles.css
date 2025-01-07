@@ -47,6 +47,12 @@ button {
     cursor: pointer;
 }
 
+.btn-hover {
+    background-color: #2b8eb3;
+    color: rgb(216, 216, 216);
+    border: 2px solid rgb(216, 216, 216);
+}
+
 .status-div {
     box-sizing: border-box;
     padding: 20px;
