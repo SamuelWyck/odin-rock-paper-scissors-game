@@ -1,8 +1,13 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px;
+    min-height: 100vh;
 }
 
 .debug {
@@ -10,7 +15,6 @@
 }
 
 .game-container {
-    margin-top: 100px;
     flex-basis: 500px;
     display: flex;
     flex-direction: column;
