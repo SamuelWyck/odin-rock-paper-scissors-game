@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.debug {
+    border: 1px solid black;
+}
+
+.game-container {
+    flex-basis: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scores-div {
+    flex-basis: 100px;
+    width: 90%;
+    margin: 20px 0px;
+}
+
