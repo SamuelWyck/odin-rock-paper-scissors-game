@@ -26,12 +26,11 @@ btnDiv.addEventListener("click", function (e) {
 })
 
 
-
 function playRound(playerChoice) {
     if (needGameReset()) {
         resetGame();
     }
-    
+
     const computerChoice = getComputerChoice();
     updateChoices(playerChoice, computerChoice);
     const playerWins = evalRound(playerChoice, computerChoice);
