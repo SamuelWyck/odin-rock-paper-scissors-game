@@ -1,18 +1,41 @@
-function main() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let rounds = 0;
-    printScores(playerScore, computerScore);
+const btnDiv = document.querySelector(".btn-div");
+const playerScoreSpan = document.querySelector("#p-score");
+const computerScoreSpan = document.querySelector("#c-score");
+const playerChoiceSpan = document.querySelector("#p-choice");
+const computerChoiceSpan = document.querySelector("#c-choice");
 
-    while (rounds < 5) {
-        const score = playRound(playerScore, computerScore);
-        playerScore = score[0];
-        computerScore = score[1];
-        printScores(playerScore, computerScore);
-        rounds += 1;
+btnDiv.addEventListener("mouseover", function (e) {
+    if (e.target.matches("button")) {
+        e.target.classList.toggle("btn-hover");
     }
-    printWinner(playerScore, computerScore);
+});
+
+btnDiv.addEventListener("mouseout", function (e) {
+    if (e.target.matches("button")) {
+        e.target.classList.toggle("btn-hover");
+    }
+});
+
+
+
+
+
+
+let playerScore = 0;
+let computerScore = 0;
+printScores(playerScore, computerScore);
+
+while (true) {
+    const score = playRound(playerScore, computerScore);
+    playerScore = score[0];
+    computerScore = score[1];
+    printScores(playerScore, computerScore);
+    if (playerScore === 5 || computerScore === 5) {
+        break;
+    }
 }
+printWinner(playerScore, computerScore);
+
 
 
 function playRound(playerScore, computerScore) {
